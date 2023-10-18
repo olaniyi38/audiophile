@@ -1,0 +1,76 @@
+@use '../utils/' as *;
+
+.cta {
+
+
+    &__container {
+        @include padding(3rem 1rem, 3rem 2rem 5rem 2rem);
+
+        @include media(">=desktop") {
+            @include flex($align: center);
+
+        }
+    }
+
+    &__img {
+        background: url("/images/cta-mobile.webp") center no-repeat;
+        background-size: 100%;
+        aspect-ratio: 1 / .9;
+        position: relative;
+        border-radius: .5rem;
+        margin-bottom: 2rem;
+
+        @include media(">=tablet") {
+            background-image: url("/images/cta-tablet.webp");
+            aspect-ratio: 16 / 6;
+
+        }
+
+        @include media(">=desktop") {
+            background-image: url("/images/cta-desktop.webp");
+            aspect-ratio: 1 / 1.1;
+            background-size: cover;
+            flex: 1 1 0;
+            order: 2
+        }
+    }
+
+    &__content {
+        @include flex(column);
+        flex: 1.3 1 0;
+        order: 1;
+        gap: 1.5rem 0rem;
+        text-align: center;
+
+        @include media(">=desktop") {
+            text-align: left;
+
+        }
+    }
+
+    &__title {
+        @include typography(1.5rem, 1.1, 2rem);
+        font-weight: 600;
+        @include padding(0rem 2rem, 2rem 3rem 1rem 3rem, );
+
+        @include media(">=desktop") {
+            max-width: 33rem;
+
+        }
+
+        span {
+            color: $orange;
+        }
+    }
+
+    &__text {
+        color: $dark-gray;
+        @include padding(0, 0rem 3rem, );
+
+        @include media(">=desktop") {
+            max-width: 33rem;
+
+        }
+
+    }
+}

@@ -1,0 +1,76 @@
+@use '../utils/' as *;
+
+.footer {
+    background: $black;
+    color: $white;
+
+    &__container {
+        @include padding(2rem 1rem, 3rem 2rem);
+        @include flex(column);
+        gap: 2rem 0rem;
+        text-align: center;
+
+        @include media(">=tablet") {
+            text-align: left;
+        }
+    }
+
+    &__header {
+        @include media('>=desktop') {
+            @include flex(row, center, space-between);
+        }
+    }
+
+    &__title {
+        font-size: 1.6rem;
+        font-weight: 900;
+    }
+
+    &__links {
+        @include flex(column, center);
+        gap: 1rem;
+        @include typography(.8rem, normal);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 600;
+
+        @include media(">=tablet") {
+            @include flex(row, center);
+            gap: 2rem;
+        }
+    }
+
+    &__text {
+        color: $dark-gray;
+
+        @include media(">=tablet") {
+            max-width: 32rem;
+        }
+    }
+
+    &__aside {
+        p {
+            color: $dark-gray;
+            font-weight: 600;
+        }
+
+        @include media(">=desktop") {
+            @include flex(row, center, space-between);
+        }
+    }
+
+    &__socials {
+        @include flex(_, center, center);
+        @include padding(2rem 0rem);
+        gap: 0rem 2rem;
+
+        svg {
+            width: 1.8rem;
+            height: auto;
+        }
+
+        @include media(">=tablet") {
+            justify-content: flex-start;
+        }
+    }
+}

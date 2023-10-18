@@ -1,0 +1,25 @@
+@use '../utils/' as *;
+
+.product-other {
+    @include flex(column);
+    gap: 1rem 0rem;
+    text-align: center;
+    font-weight: 600;
+
+    @include typography(1.1rem, normal);
+
+    &__img {
+        background-color: $light-gray;
+        display: grid;
+        place-items: center;
+        @include padding(1rem 0rem);
+        min-height: 300px;
+
+        @include media("<=phone") {
+            img {
+                width: 100px;
+            }
+        }
+
+    }
+}

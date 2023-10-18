@@ -1,0 +1,163 @@
+@use '../utils/' as *;
+
+
+.featured-products {
+
+    &__container {
+        @include padding(4rem 1.5rem, 4rem 2.5rem);
+        @include flex(column);
+        gap: 1.5rem 0rem;
+
+        @include media(">=tablet") {
+            gap: 2.5rem 0rem;
+        }
+
+        @include media(">=desktop") {
+            gap: 3.5rem 0rem;
+        }
+    }
+
+    .featured-product {
+        border-radius: .5rem;
+        @include padding(2.5rem 1rem, 2.5rem 2rem);
+
+        &__title {
+            @include typography(1.7rem, 1.1);
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+    }
+
+    .zx9 {
+        background: $orange url("/images/oval-mobile.webp") center no-repeat;
+        background-size: cover;
+        color: $white;
+        text-align: center;
+        @include flex(column, center, center);
+        overflow: hidden;
+
+        @include media(">=phone") {
+            background-image: url("/images/oval-tablet.webp");
+            @include padding(2.5rem 1rem, 4rem 1rem, 0rem 1rem)
+        }
+
+
+        @include media(">=desktop") {
+            @include flex(row);
+            text-align: left;
+        }
+
+
+        .featured-product {
+
+            &__title {
+                @include typography(1.8rem, 1.1, 3rem);
+                font-weight: 600;
+            }
+
+            &__image {
+                position: relative;
+                width: 10rem;
+                aspect-ratio: 1 / 1.2;
+                object-fit: contain;
+                margin: 0 auto;
+                margin-bottom: 2rem;
+
+                @include media(">=phone") {
+                    width: 13rem
+                }
+
+                @include media(">=desktop") {
+                    max-width: 25rem;
+                    top: 4rem;
+                    flex: 1 1 0;
+                }
+            }
+
+            &__content {
+                @include flex(column, center, center);
+                max-width: 32rem;
+                gap: 1.5rem 0rem;
+                @include padding(0, 0, 0rem 0rem 0rem 6rem);
+
+                @include media(">=desktop") {
+                    align-items: flex-start;
+                    flex: 1 1 0;
+                    max-width: 30rem;
+
+                }
+            }
+        }
+    }
+
+
+    .zx7 {
+        background: url("/zx7-mobile.webp") center no-repeat;
+        background-size: 100%;
+        aspect-ratio: 1 / 1;
+
+        @include media(">=tablet") {
+            background-image: url("/zx7-tablet.webp");
+            aspect-ratio: 16 / 8;
+        }
+
+        @include media(">=tablet") {
+            background-image: url("/zx7-desktop.webp");
+            background-size: cover;
+            aspect-ratio: 16 / 5;
+        }
+
+        .featured-product {
+            &__content {
+                @include flex(column, start, center);
+                gap: 2rem;
+                height: 100%;
+                @include padding(0, $desk: 0rem 0rem 0rem 4rem)
+            }
+        }
+
+    }
+
+    .yx1 {
+        @include padding(0);
+        @include flex(column);
+        gap: 1.5rem;
+
+        @include media(">=tablet") {
+            @include flex(row)
+        }
+
+
+
+        .featured-product {
+            &__image {
+                background: url("/images/yx1-mobile.webp") center no-repeat;
+                background-size: 100%;
+                aspect-ratio: 16 / 9;
+                border-radius: .5rem;
+                flex: 1 1 50%;
+
+                @include media(">=tablet") {
+                    background-image: url("/images/yx1-tablet.webp");
+                    aspect-ratio: 1 / 1;
+                    background-size: cover;
+                }
+
+                @include media(">=desktop") {
+                    background-image: url("/images/yx1-desktop.webp");
+                    aspect-ratio: 4 / 3;
+                }
+            }
+
+            &__content {
+                background: $light-gray;
+                @include padding(2rem 1rem, 2rem, 4rem);
+                border-radius: .5rem;
+                @include flex(column, start, center);
+                gap: 2rem 0rem;
+                flex: 1 1 50%;
+            }
+        }
+    }
+}

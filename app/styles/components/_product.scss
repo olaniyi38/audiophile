@@ -1,0 +1,104 @@
+@use '../utils/' as *;
+
+.category-page {
+
+    .product {
+        text-align: center;
+
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+
+            .product__content {
+                @include padding(0, 2rem, 2rem 3rem 2rem 0);
+            }
+        }
+
+        @include media(">=desktop") {
+            text-align: left;
+        }
+
+        @include media(">=desktop") {
+            @include flex(row, center);
+        }
+
+        &__content {
+            @include flex(column);
+            gap: 1.5rem 0rem;
+            max-width: 28rem;
+            margin: 0 auto;
+            @include padding(0, 2rem, 2rem 3rem, );
+
+            @include media(">=desktop") {
+                flex: 1 1 0;
+            }
+        }
+
+        .new {
+            color: $orange;
+            letter-spacing: 7px;
+            @include typography(.9rem, normal);
+            text-transform: uppercase;
+        }
+
+        &__img {
+            position: relative;
+            background: $light-gray;
+            border-radius: .5rem;
+            margin-bottom: 2.5rem;
+            display: grid;
+            place-items: center;
+            @include padding(2rem 0rem, 3rem 0 4rem 0);
+
+            img {
+                @include media("<=desktop") {
+                    width: 200px;
+                }
+
+                width: 350px
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 5rem;
+                height: 1rem;
+                background: rgba(0, 0, 0, 0.178);
+                bottom: 1rem;
+                border-radius: 100%;
+                filter: blur(5px);
+
+                @include media(">=tablet") {
+                    width: 10rem;
+                    bottom: 2rem;
+                }
+            }
+
+            @include media(">=desktop") {
+                flex: 1 1 0;
+                max-width: 30rem;
+                aspect-ratio: 1 / 1;
+            }
+
+            @include media(">=desktop-lg") {
+                max-width: 33rem;
+
+                img {}
+
+            }
+
+
+
+        }
+
+        &__name {
+            @include typography(2rem, 1, 2rem, 1, 2.6rem, 1);
+            @include padding(0rem 2rem, 0);
+            font-weight: 500;
+        }
+
+        &__description {
+            color: $dark-gray;
+            @include typography(.9rem, 1.5rem)
+        }
+    }
+}

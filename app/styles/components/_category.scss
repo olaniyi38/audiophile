@@ -1,0 +1,80 @@
+@use '../utils/' as *;
+
+.category {
+    @include flex(column, center, center);
+    @include padding(2rem 0rem);
+    position: relative;
+    gap: 2rem 0rem;
+
+    &::after {
+        content: "";
+        border-radius: .5rem;
+        position: absolute;
+        background: $light-gray;
+        width: 100%;
+        height: 9.5rem;
+        z-index: -1;
+        bottom: 0rem;
+
+        @include media(">=desktop") {
+            height: 10.5rem;
+        }
+
+    }
+
+
+
+    &__img {
+        position: relative;
+        width: 6rem;
+        height: 6rem;
+        z-index: 2;
+
+        @include media(">=tablet") {
+            width: 8rem;
+            height: 8rem;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            background: rgb(32, 31, 31);
+            height: 1rem;
+            bottom: 0rem;
+            border-radius: 100%;
+            filter: blur(20px);
+            z-index: 1;
+        }
+
+    }
+
+    &__content {
+        @include flex(column, center, center);
+        gap: 1rem 0rem;
+    }
+
+    &__title {
+        text-transform: uppercase;
+        @include typography(.8rem, normal);
+        font-weight: 600;
+    }
+
+    &__link {
+        @include flex(row, center);
+        gap: 0rem .5rem;
+        color: $dark-gray;
+        text-transform: uppercase;
+        @include typography(.8rem, normal);
+
+
+        .chev-right-icn {
+            color: $orange;
+            stroke-width: 2px;
+        }
+    }
+}

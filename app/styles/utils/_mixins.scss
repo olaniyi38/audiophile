@@ -1,0 +1,48 @@
+@use './breakpoints' as bkp;
+
+@mixin padding($mob, $tab: $mob, $desk: $tab, $desk-lg: $desk) {
+    padding: $mob;
+
+    @include bkp.media(">=phone") {
+        padding: $tab;
+    }
+
+    @include bkp.media(">=tablet") {
+        padding: $desk;
+    }
+
+    @include bkp.media(">=desktop") {
+        padding: $desk-lg;
+    }
+}
+
+@mixin typography($mob-fs, $mob-lh, $tab-fs: $mob-fs, $tab-lh: $mob-lh, $desk-fs: $tab-fs, $desk-lh: $tab-lh, $desk-lg-fs: $desk-fs, $desk-lg-lh: $desk-lh) {
+    font-size: $mob-fs;
+    line-height: $mob-lh;
+
+    @include bkp.media(">=phone") {
+        font-size: $tab-fs;
+        line-height: $tab-lh;
+    }
+
+    @include bkp.media(">=tablet") {
+        font-size: $desk-fs;
+        line-height: $desk-lh;
+    }
+
+    @include bkp.media(">=desktop") {
+        font-size: $desk-lg-fs;
+        line-height: $desk-lg-lh;
+    }
+
+}
+
+
+
+
+@mixin flex($direction: row, $align: stretch, $justify: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}

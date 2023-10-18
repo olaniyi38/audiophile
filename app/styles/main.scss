@@ -1,0 +1,20 @@
+@use 'utils' as *;
+@use 'base';
+@use 'layout';
+@use 'components';
+@use 'pages';
+
+section > div, footer > div {
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    &:has(.cart.active) {
+        overflow: hidden;
+    }
+}

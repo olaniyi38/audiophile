@@ -1,0 +1,63 @@
+@use "../utils/" as *;
+
+.cart-item {
+    @include flex(row, center, space-between);
+
+    &__about {
+        @include flex(row, center);
+        gap: 0rem 1rem;
+    }
+
+    &__img {
+        background: $light-gray;
+        border-radius: .5rem;
+        @include padding(.7rem 1rem);
+
+        img {
+            width: 35px;
+        }
+    }
+
+    &__info {
+        @include typography(.9rem, normal);
+        @include flex(column);
+        gap: .3rem 0rem;
+    }
+
+    &__name {
+        letter-spacing: 1px;
+        @include typography(.9rem, normal);
+    }
+
+    &__price {
+        color: $dark-gray;
+        @include typography(.85rem, normal);
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-family: monospace;
+    }
+
+
+    .counter {
+        gap: 0rem 1rem;
+        border-radius: .3rem;
+        @include typography(.75rem, normal);
+        font-weight: 600;
+
+        &__value {
+            width: 1rem
+        }
+
+        button {
+            @include padding(.8rem .5rem);
+
+            svg {
+                stroke: $dark-gray;
+            }
+        }
+
+
+
+
+    }
+}

@@ -1,0 +1,25 @@
+@use "../utils/" as *;
+
+.counter {
+    @include flex(row, center);
+    width: fit-content;
+    gap: 0rem 1rem;
+    border-radius: .3rem;
+    background: $light-gray;
+
+    button {
+        @include padding(1rem);
+
+        svg {
+            transition: all .2s ease-in-out;
+
+            &:hover {
+                stroke: $orange;
+            }
+        }
+    }
+
+
+
+
+}

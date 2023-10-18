@@ -1,0 +1,71 @@
+@use '../utils/' as *;
+
+.header {
+    z-index: 4;
+    background: $black;
+    position: sticky;
+    top: 0;
+    color: $white;
+    width: 100%;
+
+    &__container {
+        @include flex(row, center);
+        gap: 0rem 3rem;
+        @include padding(1rem 1rem, 2rem);
+        max-width: 1200px;
+        margin-inline: auto;
+
+        @include media(">=tablet") {
+            justify-content: space-between;
+        }
+    }
+
+    &__title {
+        font-size: 1.65rem;
+        font-weight: 800;
+
+    }
+
+    &__nav {
+        @include media("<=tablet") {
+            display: none;
+        }
+
+        @include flex(row, center, center);
+        @include typography(.8rem, normal);
+        gap: 0rem 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+
+        @include media(">=desktop-lg") {
+            gap: 0rem 4.5rem;
+        }
+    }
+
+    &--sticky {
+        
+    }
+
+    .toggle {
+        @include media(">=desktop") {
+            display: none;
+        }
+    }
+
+    button.cart {
+        @include media("<=tablet") {
+            margin-left: auto;
+        }
+
+    }
+
+    .cart-icn,
+    .bars-icn {
+        width: 1.5rem;
+        height: auto;
+    }
+
+    .bars-icn {
+        stroke-width: 1px;
+    }
+}

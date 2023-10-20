@@ -1,6 +1,5 @@
-"use client";
 
-import { useState } from "react";
+
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi2";
 
 const Counter = ({ incrFunc, decrFunc, value = 1 }) => {

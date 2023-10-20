@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect } from "react";
 import { useState } from "react";
@@ -6,9 +6,9 @@ import { useState } from "react";
 function useCounter(initialValue, max = null, min = null) {
 	const [count, setCount] = useState(initialValue || 0);
 
-	useEffect(()=>{
-		console.log("rendered hook", count)
-	},[count])
+	useEffect(() => {
+		setCount(initialValue);
+	}, [initialValue]);
 
 	const increment = () => {
 		if (max) {
@@ -17,7 +17,7 @@ function useCounter(initialValue, max = null, min = null) {
 		}
 		setCount((x) => x + 1);
 	};
-    
+
 	const decrement = () => {
 		if (min) {
 			count > min && setCount((x) => x - 1);

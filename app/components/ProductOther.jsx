@@ -10,7 +10,7 @@ const ProductOther = ({ data }) => {
 				<Image src={image.desktop} width={150} height={150} alt={name} />
 			</div>
 			<p className="product-other__name">{name}</p>
-			<Link href={"/product/" + slug}>
+			<Link href={"/products/" + slug}>
 				<Button variant={BUTTON_VARIANTS.orange}>See product</Button>
 			</Link>
 		</div>

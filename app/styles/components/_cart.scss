@@ -6,12 +6,15 @@
     background: rgba(0, 0, 0, 0.589);
     inset: 0;
     z-index: 3;
-    @include padding(6rem 2rem, 10rem 10rem 0rem);
+    @include padding(6rem 2rem, 10rem 5rem 10rem 5rem, 10rem);
     letter-spacing: 1px;
-    // display: none;
-    
+    scale: 0;
+    transition: scale 0s .4s ease-in-out;
+    overflow: hidden;
+
     &:has(.cart.active) {
-        
+        scale: 1;
+        transition: scale 0s ease-in-out;
 
     }
 
@@ -24,6 +27,12 @@
         margin-left: auto;
         @include flex(column);
         max-height: 43rem;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+
+        &.active {
+            opacity: 1;
+        }
 
 
         &__header {

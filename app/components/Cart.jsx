@@ -16,6 +16,7 @@ const CartEmpty = () => {
 					loading="eager"
 					height={100}
 					src="/images/empty-cart.webp"
+					alt="empty-img"
 				/>
 			</div>
 			<h3>Cart is empty!</h3>
@@ -24,7 +25,7 @@ const CartEmpty = () => {
 	);
 };
 
-const Cart = ({ isOpen }) => {
+const Cart = ({ isOpen, closeFunc }) => {
 	const cartItems = Object.entries(useSelector(selectCartItems));
 	const dispatch = useDispatch();
 
@@ -38,7 +39,13 @@ const Cart = ({ isOpen }) => {
 	const totalPrice = data.reduce((acc, prd) => acc + prd.price * prd.qty, 0);
 
 	return (
-		<div className="cart-wrapper">
+		<div
+			className="cart-wrapper"
+			onClick={(e) => {
+				if (e.target !== e.currentTarget) return;
+				closeFunc();
+			}}
+		>
 			<div className={`cart ${isOpen ? "active" : ""}`}>
 				{cartItems.length > 0 ? (
 					<>

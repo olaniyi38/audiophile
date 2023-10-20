@@ -14,18 +14,16 @@ const CartItem = ({ data }) => {
 
 	function onIncrement() {
 		increment();
-		console.log(count);
-
 		dispatch(updateItem({ id, axn: "add" }));
 	}
 
+	
 	useEffect(() => {
-		console.log("renedred cartItem");
-	}, []);
+		console.log("count updated cart-item: ", count);
+	}, [count]);
 
 	function onDecrement() {
 		decrement();
-		console.log(count);
 		if (count === 1) {
 			dispatch(removeItem({ id }));
 			return;

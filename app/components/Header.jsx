@@ -4,6 +4,9 @@ import Link from "next/link";
 import { HiBars3, HiOutlineShoppingCart } from "react-icons/hi2";
 import Cart from "./Cart";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectCartCount, selectCartItems } from "../features/cart/cartSlice";
+import MobileNav from "./MobileNav";
 
 const Header = ({ sticky = false }) => {
 	const LINKS = [
@@ -13,7 +16,7 @@ const Header = ({ sticky = false }) => {
 		},
 		{
 			title: "speakers",
-			url: "/catgories/speakers",
+			url: "/categories/speakers",
 		},
 		{
 			title: "earphones",
@@ -25,7 +28,11 @@ const Header = ({ sticky = false }) => {
 		return (
 			<nav className="header__nav">
 				{LINKS.map(({ title, url }) => (
-					<Link key={title + "header"} href={url}>
+					<Link
+						onClick={() => setCartOpen(false)}
+						key={title + "header"}
+						href={url}
+					>
 						{title}
 					</Link>
 				))}
@@ -34,24 +41,46 @@ const Header = ({ sticky = false }) => {
 	};
 
 	const [isCartOpen, setCartOpen] = useState(false);
+	const [isMobileNavActive, setMobileNavActive] = useState(false);
+	const cartItemsCount = useSelector(selectCartCount);
 
 	return (
 		<>
 			<header className={`header ${sticky ? "header--sticky" : ""}`}>
 				<div className="header__container">
-					<button className="toggle">
+					<button
+						onClick={() => setMobileNavActive(!isMobileNavActive)}
+						className="toggle"
+					>
 						<HiBars3 className="bars-icn" />
 					</button>
-					<Link href="/" className="header__title">
+					<Link
+						onClick={() => {
+							setCartOpen(false);
+							setMobileNavActive(false);
+						}}
+						href="/"
+						className="header__title"
+					>
 						audiophile
 					</Link>
 					<NavLinks />
-					<button onClick={() => setCartOpen(!isCartOpen)} className="cart">
+					<button
+						onClick={() => {
+							setMobileNavActive(false);
+							setCartOpen(!isCartOpen);
+						}}
+						className="cart"
+					>
+						{cartItemsCount > 0 && <span className="active"></span>}
 						<HiOutlineShoppingCart className="cart-icn" />
 					</button>
 				</div>
 			</header>
-			{isCartOpen && <Cart isOpen={isCartOpen} />}
+
+			<Cart isOpen={isCartOpen} closeFunc={() => setCartOpen(false)} />
+
+			<MobileNav isActive={isMobileNavActive} />
 		</>
 	);
 };

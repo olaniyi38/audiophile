@@ -19,7 +19,7 @@ const Product = ({ data }) => {
 				{isNew && <p className="new">new product</p>}
 				<h3 className="product__name">{name}</h3>
 				<p className="product__description">{description}</p>
-				<Link href={"/product/" + slug}>
+				<Link href={"/products/" + slug}>
 					<Button variant={BUTTON_VARIANTS.orange}>see product</Button>
 				</Link>
 			</div>

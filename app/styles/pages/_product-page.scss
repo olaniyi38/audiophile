@@ -29,7 +29,7 @@
             gap: 1.5rem 0rem;
             max-width: 28rem;
             flex: 1.5 1 0;
-            @include padding(0, 0 0 0 2rem, 0 0 0 4rem,0 0 0 6rem);
+            @include padding(0, 0 0 0 2rem, 0 0 0 4rem, 0 0 0 6rem);
 
             @include media(">=640px") {
                 max-width: 32rem;
@@ -56,8 +56,13 @@
             @include padding(2rem 0rem);
             flex: 1.4 1 0;
 
+            img {
+                width: 200px;
+            }
+
             @include media(">=tablet") {
                 flex: 1 1 0;
+
             }
 
             @include media(">=desktop") {
@@ -72,7 +77,7 @@
         }
 
         &__name {
-            @include typography(2rem, 1,_,_,3rem, );
+            @include typography(2rem, 1, 2rem, 1, 2rem, 1, 3rem);
             @include padding(0rem, 0);
             font-weight: 500;
         }

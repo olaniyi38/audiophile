@@ -1,0 +1,58 @@
+@use "../utils/" as *;
+
+.radio {
+
+    label {
+        @include padding(.7rem 1rem);
+        @include flex(row, center);
+        gap: 0rem .5rem;
+        outline: 1px solid $gray;
+        border-radius: .3rem;
+        width: 100%;
+        text-transform: capitalize;
+        @include typography(.8rem, normal);
+
+        &[aria-invalid="true"] {
+            outline: 1px solid red;
+        }
+
+        input {
+            display: none;
+
+           
+
+
+        }
+
+        &:has(input:checked) {
+            outline: 1px solid $orange;
+
+            .radio-icon {
+                svg {
+                    scale: .8 .8;
+                }
+            }
+        }
+
+
+
+        .radio-icon {
+            outline: 1px solid $dark-gray;
+            border-radius: 100%;
+            width: 1rem;
+            height: 1rem;
+
+            svg {
+                fill: $orange;
+                stroke: transparent;
+                transition: all .1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+                width: 1rem;
+                height: auto;
+                scale: 0;
+
+            }
+        }
+    }
+
+    transition: all .3s ease-in-out;
+}

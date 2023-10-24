@@ -26,7 +26,8 @@
 
     &__name {
         letter-spacing: 1px;
-        @include typography(.9rem, normal);
+        @include typography(.85rem, normal);
+        font-weight: 600;
     }
 
     &__price {
@@ -36,6 +37,16 @@
         letter-spacing: 1px;
         font-family: monospace;
     }
+
+    &__qty {
+        color: $dark-gray;
+        @include typography(.85rem, normal);
+        align-self: flex-start;
+        @include padding(.7rem);
+       
+    }
+
+    &--checkout {}
 
 
     .counter {
@@ -55,9 +66,5 @@
                 stroke: $dark-gray;
             }
         }
-
-
-
-
     }
 }

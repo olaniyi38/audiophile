@@ -1,0 +1,40 @@
+@use "../utils/" as *;
+
+.form-input {
+    @include flex(column);
+    gap: .7rem 0rem;
+
+    &__label {
+        text-transform: capitalize;
+        @include typography(.75rem, normal);
+        letter-spacing: 1px;
+        font-weight: 600;
+
+
+
+
+    }
+
+    input {
+        outline: 1px solid $gray;
+        border-radius: .2rem;
+        @include padding(.7rem 1.2rem);
+
+        &:focus {
+            outline: 1px solid $orange;
+        }
+
+        transition: all .2s ease-in-out;
+
+        &::placeholder {
+            text-transform: capitalize;
+            font-size: .9rem;
+        }
+
+        &[aria-invalid="true"] {
+            outline: 1px solid red;
+        }
+
+    }
+
+}

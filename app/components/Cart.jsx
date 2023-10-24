@@ -1,15 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { clearCart, selectCartItems } from "../features/cart/cartSlice";
+import {
+	clearCart,
+	selectCartItems,
+	selectCartTotal,
+} from "../features/cart/cartSlice";
 import Button, { BUTTON_VARIANTS } from "./Button";
 import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import products from "../data/products.json";
+import Link from "next/link";
 
-const CartEmpty = () => {
+export const CartEmpty = () => {
 	return (
-		<div className="cart__empty">
+		<div className="cart--empty">
 			<div className="cart__empty-img">
 				<Image
 					width={100}
@@ -26,17 +31,10 @@ const CartEmpty = () => {
 };
 
 const Cart = ({ isOpen, closeFunc }) => {
-	const cartItems = Object.entries(useSelector(selectCartItems));
+	const cartItems = useSelector(selectCartItems);
+	const totalPrice = useSelector(selectCartTotal);
 	const dispatch = useDispatch();
 
-	const data = cartItems.map(([id, qty]) => {
-		const productData = products.find((prd) => prd.id == id);
-		const { shortName, image, price } = productData;
-
-		return { shortName, image, price, qty, id };
-	});
-
-	const totalPrice = data.reduce((acc, prd) => acc + prd.price * prd.qty, 0);
 
 	return (
 		<div
@@ -54,7 +52,7 @@ const Cart = ({ isOpen, closeFunc }) => {
 							<button onClick={() => dispatch(clearCart())}>Remove all</button>
 						</div>
 						<div className="cart__items">
-							{data.map((d) => (
+							{cartItems.map((d) => (
 								<CartItem key={d.id} data={d} />
 							))}
 						</div>
@@ -63,7 +61,10 @@ const Cart = ({ isOpen, closeFunc }) => {
 								<span>Total</span>
 								<span className="value">$ {totalPrice.toLocaleString()}</span>
 							</div>
-							<Button variant={BUTTON_VARIANTS.orange}>Checkout</Button>
+
+							<Button variant={BUTTON_VARIANTS.orange}>
+								<Link href="/checkout">Checkout</Link>
+							</Button>
 						</div>
 					</>
 				) : (

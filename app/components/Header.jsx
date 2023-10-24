@@ -11,6 +11,10 @@ import MobileNav from "./MobileNav";
 const Header = ({ sticky = false }) => {
 	const LINKS = [
 		{
+			title: "home",
+			url: "/",
+		},
+		{
 			title: "headphones",
 			url: "/categories/headphones",
 		},

@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import products from '../../data/products.json'
 
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cart: {
-
+            2: 3,
+            1: 4,
+            5: 9
         }
     },
     reducers: {
@@ -40,9 +43,35 @@ const cartSlice = createSlice({
 })
 
 //selectors
-export const selectCartItems = state => state.cart.cart
+export const selectCartItems = state => {
+    const items = Object.entries(state.cart.cart)
+
+    const cartItems = items.map(([ id, qty ]) => {
+        const productData = products.find((prd) => prd.id == id);
+        const { shortName, image, price } = productData;
+
+        return { shortName, image, price, qty, id };
+    });
+
+    return cartItems
+}
 
 export const selectCartCount = state => Object.values(state.cart.cart).reduce((acc, val) => acc + val, 0)
+
+export const selectCartTotal = state => {
+    const items = Object.entries(state.cart.cart)
+
+    const cartItems = items.map(([ id, qty ]) => {
+        const productData = products.find((prd) => prd.id == id);
+        const { shortName, image, price } = productData;
+
+        return { shortName, image, price, qty, id };
+    });
+
+    return cartItems.reduce((acc, prd) => acc + prd.price * prd.qty, 0)
+
+};
+
 
 //action creators
 export const { addItem, updateItem, removeItem, clearCart } = cartSlice.actions

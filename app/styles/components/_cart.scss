@@ -6,7 +6,8 @@
     background: rgba(0, 0, 0, 0.589);
     inset: 0;
     z-index: 3;
-    @include padding(6rem 2rem, 10rem 5rem 10rem 5rem, 10rem);
+    @include padding(6rem 2rem, 10rem 5rem 10rem 5rem, 8rem 10rem 10rem 10rem);
+
     letter-spacing: 1px;
     scale: 0;
     transition: scale 0s .4s ease-in-out;
@@ -56,12 +57,19 @@
             @include flex(column);
             gap: 1.5rem 0rem;
             overflow: auto;
+            max-height: 22rem;
         }
 
         &__footer {
             margin-top: auto;
             @include flex(column);
             gap: 1rem 0rem;
+
+            .checkout {
+                width: 100%;
+                align-self: stretch;
+                display: block;
+            }
         }
 
         &__total {
@@ -80,26 +88,27 @@
             }
         }
 
-        &__empty {
-            @include flex(column, center, center);
-            gap: 1rem;
-            max-width: 15rem;
-            margin: 0 auto;
-            margin-top: 1rem;
-            text-align: center;
+    }
+}
 
-            img {
-                width: 60px;
-                height: 60px;
-            }
+.cart--empty {
+    @include flex(column, center, center);
+    gap: 1rem;
+    max-width: 15rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-align: center;
 
-            p {
-                color: $dark-gray;
-            }
+    img {
+        width: 60px;
+        height: 60px;
+    }
 
-            h3 {
-                @include typography(1.1rem, normal);
-            }
-        }
+    p {
+        color: $dark-gray;
+    }
+
+    h3 {
+        @include typography(1.1rem, normal);
     }
 }

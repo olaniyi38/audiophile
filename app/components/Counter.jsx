@@ -1,11 +1,13 @@
-
-
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi2";
 
 const Counter = ({ incrFunc, decrFunc, value = 1 }) => {
 	return (
 		<div className="counter">
-			<button className="counter__decr" onClick={decrFunc}>
+			<button
+				className="counter__decr"
+				disabled={value === 1}
+				onClick={decrFunc}
+			>
 				<HiOutlineMinus />
 			</button>
 			<span className="counter__value">{value}</span>

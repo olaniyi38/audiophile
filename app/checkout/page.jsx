@@ -6,9 +6,13 @@ import { useForm } from "react-hook-form";
 import FormRadio from "../components/FormRadio";
 import { RiHandCoinFill } from "react-icons/ri";
 import CheckoutSummary from "../components/CheckoutSummary";
+import OrderSuccessModal from "../components/OrderSuccessModal";
+import { useState } from "react";
 
 const CheckoutPage = () => {
 	const { register, watch, handleSubmit, formState } = useForm();
+
+	const [success, setSuccess] = useState(false);
 
 	const errors = formState.errors;
 
@@ -16,6 +20,7 @@ const CheckoutPage = () => {
 
 	return (
 		<section className="checkout">
+			{success && <OrderSuccessModal />}
 			<div className="checkout__container">
 				<GoBack />
 				<form className="checkout__form">
@@ -142,7 +147,7 @@ const CheckoutPage = () => {
 						)}
 					</div>
 				</form>
-				<CheckoutSummary handleSubmit={handleSubmit} />
+				<CheckoutSummary setSuccess={setSuccess} handleSubmit={handleSubmit} />
 			</div>
 		</section>
 	);

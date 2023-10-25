@@ -115,6 +115,8 @@
     &__summary {
         background: $white;
         @include padding(2rem 1.5rem, 2rem);
+        position: sticky;
+        top: 10rem;
 
         border-radius: .5rem;
 
@@ -163,6 +165,16 @@
 
     }
 
+    .cart--empty {
+        h3 {
+            font-size: 1rem;
+            text-transform: capitalize;
+
+        }
+        p {
+            font-size: .9rem;
+        }
+    }
 
 
 }

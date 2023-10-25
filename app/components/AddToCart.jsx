@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 import useCounter from "../hooks/useCounter";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const AddToCart = ({ id }) => {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const AddToCart = ({ id }) => {
 
 	function addItemToCart() {
 		dispatch(addItem({ id, qty: count }));
+		toast.success(`added ${count} item(s) to cart`);
 	}
 
 	return (

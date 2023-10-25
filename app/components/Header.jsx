@@ -5,10 +5,13 @@ import { HiBars3, HiOutlineShoppingCart } from "react-icons/hi2";
 import Cart from "./Cart";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCartCount, selectCartItems } from "../features/cart/cartSlice";
+import { selectCartCount } from "../features/cart/cartSlice";
 import MobileNav from "./MobileNav";
+import { usePathname } from "next/navigation";
 
 const Header = ({ sticky = false }) => {
+	const path = usePathname();
+	console.log(path);
 	const LINKS = [
 		{
 			title: "home",
@@ -36,6 +39,7 @@ const Header = ({ sticky = false }) => {
 						onClick={() => setCartOpen(false)}
 						key={title + "header"}
 						href={url}
+						className={`header__nav-link ${url === path ? "active" : ""}`}
 					>
 						{title}
 					</Link>

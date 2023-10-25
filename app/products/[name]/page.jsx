@@ -6,6 +6,7 @@ import Image from "next/image";
 import ProductOther from "../../components/ProductOther";
 import AddToCart from "../../components/AddToCart";
 import GoBack from "../../components/GoBack";
+import { toast } from "react-toastify";
 
 const ProductPage = ({ params }) => {
 	const { name: productName } = params;

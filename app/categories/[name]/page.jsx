@@ -8,7 +8,9 @@ const CategoryPage = ({ params }) => {
 		(p) => p.category.toLowerCase() === categoryName.toLowerCase()
 	);
 
-	if (categoryItems == []) {
+	console.log(categoryItems)
+
+	if (categoryItems.length === 0) {
 		return <h1>Category not found</h1>;
 	}
 

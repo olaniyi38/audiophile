@@ -17,6 +17,14 @@
                 stroke: $orange;
             }
         }
+
+        &:disabled {
+            &:hover {
+                stroke: $dark-gray;
+            }
+
+            cursor: not-allowed;
+        }
     }
 
 

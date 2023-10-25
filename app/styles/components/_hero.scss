@@ -6,6 +6,7 @@
     background: url("/hero-bg-mobile.webp") no-repeat;
     background-size: cover;
     background-position: center;
+   
 
 
     @include media(">=phone") {
@@ -32,7 +33,7 @@
         }
 
         @include media(">=desktop") {
-            min-height: 93vh;
+            min-height: 80vh;
             justify-content: flex-start;
         }
 

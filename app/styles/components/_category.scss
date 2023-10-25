@@ -71,10 +71,18 @@
         text-transform: uppercase;
         @include typography(.8rem, normal);
 
+        &:hover {
+            .chev-right-icn {
+               transform: translateX(5px);
+            }
+        }
+
 
         .chev-right-icn {
+            position: relative;
             color: $orange;
             stroke-width: 2px;
+            transition: all .2s ease-in-out;
         }
     }
 }

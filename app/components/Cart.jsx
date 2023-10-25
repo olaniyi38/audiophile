@@ -9,8 +9,8 @@ import {
 import Button, { BUTTON_VARIANTS } from "./Button";
 import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
-import products from "../data/products.json";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export const CartEmpty = () => {
 	return (
@@ -35,43 +35,57 @@ const Cart = ({ isOpen, closeFunc }) => {
 	const totalPrice = useSelector(selectCartTotal);
 	const dispatch = useDispatch();
 
+	function clearCartItems() {
+		dispatch(clearCart())
+		toast.info("Cart cleared")
+	}
 
 	return (
-		<div
+		<section
 			className="cart-wrapper"
 			onClick={(e) => {
 				if (e.target !== e.currentTarget) return;
 				closeFunc();
 			}}
 		>
-			<div className={`cart ${isOpen ? "active" : ""}`}>
-				{cartItems.length > 0 ? (
-					<>
-						<div className="cart__header">
-							<span>Cart ({cartItems.length})</span>
-							<button onClick={() => dispatch(clearCart())}>Remove all</button>
-						</div>
-						<div className="cart__items">
-							{cartItems.map((d) => (
-								<CartItem key={d.id} data={d} />
-							))}
-						</div>
-						<div className="cart__footer">
-							<div className="cart__total">
-								<span>Total</span>
-								<span className="value">$ {totalPrice.toLocaleString()}</span>
+			<div
+				onClick={(e) => {
+					if (e.target !== e.currentTarget) return;
+					closeFunc();
+				}}
+				className="cart-wrapper__container"
+			>
+				<div className={`cart ${isOpen ? "active" : ""}`}>
+					{cartItems.length > 0 ? (
+						<>
+							<div className="cart__header">
+								<span>Cart ({cartItems.length})</span>
+								<button onClick={clearCartItems}>
+									Remove all
+								</button>
 							</div>
+							<div className="cart__items">
+								{cartItems.map((d) => (
+									<CartItem key={d.id} data={d} />
+								))}
+							</div>
+							<div className="cart__footer">
+								<div className="cart__total">
+									<span>Total</span>
+									<span className="value">$ {totalPrice.toLocaleString()}</span>
+								</div>
 
-							<Button variant={BUTTON_VARIANTS.orange}>
-								<Link href="/checkout">Checkout</Link>
-							</Button>
-						</div>
-					</>
-				) : (
-					<CartEmpty />
-				)}
+								<Link onClick={closeFunc} href="/checkout" className="checkout">
+									<Button variant={BUTTON_VARIANTS.orange}>Checkout</Button>
+								</Link>
+							</div>
+						</>
+					) : (
+						<CartEmpty />
+					)}
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

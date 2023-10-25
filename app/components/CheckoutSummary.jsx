@@ -1,14 +1,19 @@
 import { usePaystackPayment } from "react-paystack";
-import { selectCartItems, selectCartTotal } from "../features/cart/cartSlice";
+import {
+	clearCart,
+	selectCartItems,
+	selectCartTotal,
+} from "../features/cart/cartSlice";
 import generateUuid from "../helpers/generateUuid";
 import Button, { BUTTON_VARIANTS } from "./Button";
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CartEmpty } from "./Cart";
 
-const CheckoutSummary = ({ handleSubmit }) => {
+const CheckoutSummary = ({ handleSubmit, setSuccess }) => {
 	const cartItems = useSelector(selectCartItems);
 	const cartTotal = useSelector(selectCartTotal);
+	const dispatch = useDispatch();
 	const shipping = 50;
 	const vat = 2099;
 
@@ -24,6 +29,8 @@ const CheckoutSummary = ({ handleSubmit }) => {
 
 	const onSuccess = (reference) => {
 		// Implementation for whatever you want to do with reference and after success call.
+		setSuccess(true);
+		dispatch(clearCart());
 		console.log(reference);
 	};
 

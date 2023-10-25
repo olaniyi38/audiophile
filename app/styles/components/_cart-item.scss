@@ -2,6 +2,18 @@
 
 .cart-item {
     @include flex(row, center, space-between);
+    position: relative;
+
+    button.remove {
+        position: absolute;
+        inset: -10px -10px auto auto;
+
+        svg {
+            color: rgb(194, 61, 61);
+            width: .8rem;
+            height: auto;
+        }
+    }
 
     &__about {
         @include flex(row, center);
@@ -28,6 +40,10 @@
         letter-spacing: 1px;
         @include typography(.85rem, normal);
         font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     &__price {
@@ -43,7 +59,7 @@
         @include typography(.85rem, normal);
         align-self: flex-start;
         @include padding(.7rem);
-       
+
     }
 
     &--checkout {}

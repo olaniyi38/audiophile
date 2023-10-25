@@ -6,7 +6,6 @@
     background: rgba(0, 0, 0, 0.589);
     inset: 0;
     z-index: 3;
-    @include padding(6rem 2rem, 10rem 5rem 10rem 5rem, 8rem 10rem 10rem 10rem);
 
     letter-spacing: 1px;
     scale: 0;
@@ -17,6 +16,12 @@
         scale: 1;
         transition: scale 0s ease-in-out;
 
+    }
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        @include padding(6rem 2rem, 8rem 2rem);
     }
 
     .cart {
@@ -55,8 +60,9 @@
             margin: 1.5rem 0;
             @include padding(1.5rem .5rem 1.5rem 0);
             @include flex(column);
-            gap: 1.5rem 0rem;
-            overflow: auto;
+            gap: 2rem 0rem;
+            overflow-y: auto;
+            overflow-x: hidden;
             max-height: 22rem;
         }
 
@@ -69,6 +75,10 @@
                 width: 100%;
                 align-self: stretch;
                 display: block;
+
+                .button {
+                    width: 100%;
+                }
             }
         }
 

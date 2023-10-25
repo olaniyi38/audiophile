@@ -1,6 +1,8 @@
+import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Providers from "./features/Providers";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/main.scss";
 
 import { Manrope } from "next/font/google";
@@ -20,6 +22,18 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={manrope.className}>
 				<Providers>
+					<ToastContainer
+						position="top-right"
+						autoClose={1000}
+						hideProgressBar={false}
+						newestOnTop={false}
+						closeOnClick
+						rtl={false}
+						pauseOnFocusLoss
+						draggable
+						pauseOnHover={false}
+						theme="dark"
+					/>
 					<Header />
 					<main>{children}</main>
 					<Footer />

@@ -5,9 +5,12 @@ import Counter from "./Counter";
 import { useDispatch } from "react-redux";
 import useCounter from "../hooks/useCounter";
 import { removeItem, updateItem } from "../features/cart/cartSlice";
+import { toast } from "react-toastify";
+import { FaXmark } from "react-icons/fa6";
+import Link from "next/link";
 
 const CartItem = ({ data, checkout = false }) => {
-	const { image, shortName, price, qty, id } = data;
+	const { image, shortName, price, qty, id, slug } = data;
 	const { increment, decrement, count } = useCounter(qty, null, 1);
 	const dispatch = useDispatch();
 
@@ -19,7 +22,6 @@ const CartItem = ({ data, checkout = false }) => {
 	function onDecrement() {
 		decrement();
 		if (count === 1) {
-			dispatch(removeItem({ id }));
 			return;
 		}
 		dispatch(updateItem({ id, axn: "minus" }));
@@ -27,13 +29,21 @@ const CartItem = ({ data, checkout = false }) => {
 
 	return (
 		<div className={`cart-item ${checkout ? "cart-item--checkout" : ""}`}>
+			{!checkout && (
+				<button onClick={() => dispatch(removeItem({ id }))} className="remove">
+					<FaXmark />
+				</button>
+			)}
 			<div className="cart-item__about">
 				<div className="cart-item__img">
 					<Image src={image.mobile} width={100} height={100} alt="" />
 				</div>
 				<div className="cart-item__info">
-					<div className="cart-item__name">{shortName}</div>
-					<div className="cart-item__price">${price.toLocaleString()}</div>
+					<Link href={"/products/" + slug}>
+						{" "}
+						<p className="cart-item__name">{shortName}</p>
+					</Link>
+					<p className="cart-item__price">${price.toLocaleString()}</p>
 				</div>
 			</div>
 			{!checkout ? (

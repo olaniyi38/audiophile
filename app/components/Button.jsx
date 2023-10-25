@@ -4,7 +4,7 @@ export const BUTTON_VARIANTS = {
 };
 
 const Button = ({ children, onClickFunc, inverted, variant }) => {
-	const variantStyles = `${inverted && "button--inverted"} ${
+	const variantStyles = `${inverted ? "button--inverted" : ""} ${
 		variant && variant
 	}`;
 

@@ -1,11 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { env } from "process";
+import { persistReducer, persistStore } from "redux-persist"
+import storage from "redux-persist/lib/storage"
 import logger from 'redux-logger'
-import cartSlice from "./cart/cartSlice";
+import cartReducer from "./cart/cartSlice";
+
+
+const persistConfig = {
+    key: "root",
+    storage
+}
 
 const store = configureStore({
     reducer: {
-        cart: cartSlice,
+        cart: persistReducer(persistConfig, cartReducer),
 
     },
     middleware: (getDefaultMiddleware) =>
@@ -13,5 +20,7 @@ const store = configureStore({
     devTools: process.env.NODE_ENV !== "production"
 
 })
+
+export const persistor = persistStore(store)
 
 export default store

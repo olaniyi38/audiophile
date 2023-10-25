@@ -5,9 +5,7 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cart: {
-            2: 3,
-            1: 4,
-            5: 9
+
         }
     },
     reducers: {
@@ -48,9 +46,10 @@ export const selectCartItems = state => {
 
     const cartItems = items.map(([ id, qty ]) => {
         const productData = products.find((prd) => prd.id == id);
-        const { shortName, image, price } = productData;
+        console.log(productData)
+        const { shortName, image, price, slug } = productData;
 
-        return { shortName, image, price, qty, id };
+        return { shortName, image, price, qty, id, slug };
     });
 
     return cartItems

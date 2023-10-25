@@ -1,0 +1,78 @@
+@use "../utils/" as *;
+
+.order-success {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.726);
+    z-index: 2;
+    max-width: none;
+    display: grid;
+    place-items: center;
+
+    &__container {
+        background: $white;
+        border-radius: .4rem;
+        @include padding(3rem 1.5rem);
+        @include flex(column);
+        gap: 2rem 0rem;
+        max-width: 25rem;
+        width: 90%;
+
+        .check {
+            svg {
+                width: 4rem;
+                height: auto;
+                fill: $orange;
+            }
+        }
+
+
+    }
+
+    &__msg {
+        h1 {
+            @include typography(1.4rem, normal, 1.7rem);
+            max-width: 20rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: $dark-gray;
+            @include typography(.9rem, normal);
+            margin-top: .5rem;
+
+        }
+    }
+
+    &__order {
+        @include flex(row);
+
+    }
+
+    .order {
+        &__list {
+            flex: 1 1 50%;
+            background: $light-gray;
+        }
+
+        &__total {
+            flex: 1 1 50%;
+            background: black;
+            color: $white;
+            @include padding(2rem);
+
+            h3 {
+                font-weight: 300;
+            }
+
+        }
+    }
+
+    a {
+        justify-self: stretch;
+
+        .button {
+            width: 100%;
+        }
+    }
+}

@@ -41,6 +41,18 @@
         }
     }
 
+    &__footer-link {
+        transition: all .2s ease-in-out;
+
+        &.active {
+            color: $orange;
+        }
+
+        &:hover {
+            color: $orange;
+        }
+    }
+
     &__text {
         color: $dark-gray;
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
 	AiFillFacebook,
 	AiOutlineTwitter,
@@ -25,8 +26,9 @@ const LINKS = [
 ];
 
 const FooterLinks = () => {
+	const path = usePathname()
 	return LINKS.map(({ url, title }) => (
-		<Link key={title+"footer"} href={url} className="footer__link">
+		<Link key={title+"footer"} href={url}className={`footer__footer-link ${url === path ? "active" : ""}`}>
 			{title}
 		</Link>
 	));

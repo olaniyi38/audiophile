@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
 	AiFillFacebook,
 	AiOutlineTwitter,
 	AiOutlineInstagram,
 } from "react-icons/ai";
+import FooterLInks from "./FooterLInks";
 
 const LINKS = [
 	{
@@ -17,22 +16,13 @@ const LINKS = [
 	},
 	{
 		title: "speakers",
-		url: "/catgories/speakers",
+		url: "/categories/speakers",
 	},
 	{
 		title: "earphones",
 		url: "/categories/earphones",
 	},
 ];
-
-const FooterLinks = () => {
-	const path = usePathname()
-	return LINKS.map(({ url, title }) => (
-		<Link key={title+"footer"} href={url}className={`footer__footer-link ${url === path ? "active" : ""}`}>
-			{title}
-		</Link>
-	));
-};
 
 const Footer = () => {
 	return (
@@ -42,7 +32,7 @@ const Footer = () => {
 					<h1 className="footer__title">audiophile</h1>
 
 					<div className="footer__links">
-						<FooterLinks />
+						<FooterLInks links={LINKS} />
 					</div>
 				</div>
 
